@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 217,
+    "build": 218,
     "major": 5,
     "minor": 4,
     "revision": 0
@@ -768,7 +768,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.76193626771976,
+        "zoomFactor": 0.6672773998329975,
         "windowMask": false
       },
       "objectsGroups": [],
@@ -812,6 +812,8 @@
               "Topdown": "TopDownMovement"
             },
             {
+              "name": "TopDownMovement",
+              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
               "acceleration": 800,
               "allowDiagonals": true,
               "angleOffset": 0,
@@ -821,9 +823,7 @@
               "ignoreDefaultControls": false,
               "maxSpeed": 400,
               "movementAngleOffset": 0,
-              "name": "TopDownMovement",
               "rotateObject": false,
-              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
               "viewpoint": "TopDown"
             },
             {
