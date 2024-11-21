@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 211,
+    "build": 218,
     "major": 5,
     "minor": 4,
     "revision": 0
@@ -25,7 +25,7 @@
     "author": "Acci",
     "windowWidth": 1280,
     "windowHeight": 720,
-    "latestCompilationDirectory": "",
+    "latestCompilationDirectory": "E:\\Projects\\Bloodlock\\Mobile Builds\\11-20-24 First Test",
     "maxFPS": 60,
     "minFPS": 30,
     "verticalSync": false,
@@ -1467,6 +1467,7 @@
           "updateIfNotVisible": false,
           "variables": [
             {
+              "folded": true,
               "name": "shootDir",
               "type": "structure",
               "children": [
@@ -1495,6 +1496,7 @@
               ]
             },
             {
+              "folded": true,
               "name": "shotoMoveDir",
               "type": "structure",
               "children": [
@@ -1523,6 +1525,11 @@
                   "value": "shootMove3"
                 }
               ]
+            },
+            {
+              "name": "state",
+              "type": "number",
+              "value": 0
             }
           ],
           "effects": [],
@@ -6527,6 +6534,7 @@
                 "text": "Shoot",
                 "font": "Pixellari.ttf",
                 "textAlignment": "center",
+                "verticalTextAlignment": "top",
                 "characterSize": 60,
                 "color": "255;255;255"
               }
@@ -6689,7 +6697,6 @@
   "externalEvents": [
     {
       "associatedLayout": "TestMap",
-      "lastChangeTimeStamp": 0,
       "name": "Player",
       "events": [
         {
@@ -6697,7 +6704,6 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "folded": true,
           "name": "Movement Animations",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -6725,9 +6731,54 @@
                     "MainPlayer",
                     "TopDownMovement"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "PanelSpriteButton::PanelSpriteButton::IsPressed"
+                      },
+                      "parameters": [
+                        "Shoot",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "MouseButtonReleased"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
+                      ]
+                    }
+                  ]
                 }
               ],
-              "actions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "state",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
               "events": [
                 {
                   "type": "BuiltinCommonInstructions::Standard",
@@ -6871,9 +6922,54 @@
                     "MainPlayer",
                     "TopDownMovement"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "PanelSpriteButton::PanelSpriteButton::IsPressed"
+                      },
+                      "parameters": [
+                        "Shoot",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "MouseButtonReleased"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
+                      ]
+                    }
+                  ]
                 }
               ],
-              "actions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "state",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
               "events": [
                 {
                   "type": "BuiltinCommonInstructions::Standard",
@@ -7010,6 +7106,17 @@
               "conditions": [
                 {
                   "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "state",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
                     "value": "BuiltinCommonInstructions::Or"
                   },
                   "parameters": [],
@@ -7053,6 +7160,34 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "PanelSpriteButton::PanelSpriteButton::IsPressed"
+                      },
+                      "parameters": [
+                        "Shoot",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "MouseButtonPressed"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
+                      ]
+                    }
+                  ]
                 }
               ],
               "actions": [
@@ -7072,6 +7207,17 @@
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "state",
+                    "=",
+                    "0"
+                  ]
+                },
                 {
                   "type": {
                     "value": "BuiltinCommonInstructions::Or"
@@ -7114,6 +7260,34 @@
                         "MainPlayer",
                         "TopDownMovement",
                         "\"Left\""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "PanelSpriteButton::PanelSpriteButton::IsPressed"
+                      },
+                      "parameters": [
+                        "Shoot",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "MouseButtonPressed"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
                       ]
                     }
                   ]
@@ -7448,20 +7622,20 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "BuiltinCommonInstructions::And"
+                    "inverted": true,
+                    "value": "TopDownMovementBehavior::IsMoving"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "TopDownMovement"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
                   },
                   "parameters": [],
                   "subInstructions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "TopDownMovementBehavior::IsMoving"
-                      },
-                      "parameters": [
-                        "MainPlayer",
-                        "TopDownMovement"
-                      ]
-                    },
                     {
                       "type": {
                         "value": "PanelSpriteButton::PanelSpriteButton::IsPressed"
@@ -7469,6 +7643,15 @@
                       "parameters": [
                         "Shoot",
                         ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "MouseButtonPressed"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
                       ]
                     }
                   ]
@@ -7493,19 +7676,19 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "BuiltinCommonInstructions::And"
+                    "value": "TopDownMovementBehavior::IsMoving"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "TopDownMovement"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
                   },
                   "parameters": [],
                   "subInstructions": [
-                    {
-                      "type": {
-                        "value": "TopDownMovementBehavior::IsMoving"
-                      },
-                      "parameters": [
-                        "MainPlayer",
-                        "TopDownMovement"
-                      ]
-                    },
                     {
                       "type": {
                         "value": "PanelSpriteButton::PanelSpriteButton::IsPressed"
@@ -7514,11 +7697,251 @@
                         "Shoot",
                         ""
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "MouseButtonPressed"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "state",
+                    "=",
+                    "1"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "state",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::And"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "value": "TopDownMovementBehavior::TopDownMovementBehavior::IsUsingControl"
+                          },
+                          "parameters": [
+                            "MainPlayer",
+                            "TopDownMovement",
+                            "\"Left\""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "TopDownMovementBehavior::TopDownMovementBehavior::IsUsingControl"
+                          },
+                          "parameters": [
+                            "MainPlayer",
+                            "TopDownMovement",
+                            "\"Down\""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TopDownMovementBehavior::TopDownMovementBehavior::IsUsingControl"
+                      },
+                      "parameters": [
+                        "MainPlayer",
+                        "TopDownMovement",
+                        "\"Left\""
+                      ]
                     }
                   ]
                 }
               ],
-              "actions": []
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "Animation",
+                    "=",
+                    "\"shootMove2\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "state",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::And"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "value": "TopDownMovementBehavior::TopDownMovementBehavior::IsUsingControl"
+                          },
+                          "parameters": [
+                            "MainPlayer",
+                            "TopDownMovement",
+                            "\"Left\""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "TopDownMovementBehavior::TopDownMovementBehavior::IsUsingControl"
+                          },
+                          "parameters": [
+                            "MainPlayer",
+                            "TopDownMovement",
+                            "\"Up\""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TopDownMovementBehavior::TopDownMovementBehavior::IsUsingControl"
+                      },
+                      "parameters": [
+                        "MainPlayer",
+                        "TopDownMovement",
+                        "\"Left\""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "Animation",
+                    "=",
+                    "\"shootMove2\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Get out of Shoot State"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "PanelSpriteButton::PanelSpriteButton::IsPressed"
+                      },
+                      "parameters": [
+                        "Shoot",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "MouseButtonReleased"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MainPlayer",
+                    "state",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
             }
           ],
           "parameters": []
@@ -8747,6 +9170,7 @@
           "defaultName": "Button",
           "description": "A button that can be customized.",
           "fullName": "Button (panel sprite)",
+          "isUsingLegacyInstancesRenderer": true,
           "name": "PanelSpriteButton",
           "eventsFunctions": [
             {
@@ -10154,6 +10578,7 @@
                 "text": "Text",
                 "font": "",
                 "textAlignment": "",
+                "verticalTextAlignment": "top",
                 "characterSize": 20,
                 "color": "0;0;0"
               }
@@ -18490,6 +18915,7 @@
           "defaultName": "Joystick",
           "description": "Joystick for touchscreens.",
           "fullName": "Multitouch Joystick",
+          "isUsingLegacyInstancesRenderer": true,
           "name": "SpriteMultitouchJoystick",
           "eventsFunctions": [
             {
